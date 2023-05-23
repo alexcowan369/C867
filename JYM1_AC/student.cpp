@@ -3,9 +3,12 @@
 #include <iostream>
 using namespace std;
 
-
+// Constructor of the student class
 Student::Student()
 {
+    // setting up the pointer for use later in the program
+    // "this" will be the pointer used
+    // assigning empty strings to the proper
    this->studentID = "";
    this->firstName = "";
    this->lastName = "";
@@ -16,9 +19,10 @@ Student::Student()
    this->dgram = SOFTWARE;
 
 }
-
+// Constructor defined and showing the parameters it will take
 Student::Student(string studentID, string firstName, string lastName, string emailAddress, int age, int arrayDaysToComplete[], DegreeProgram dgram)
 {
+    // used to initialize a new student object with values from below
    this->studentID = studentID;
    this->firstName = firstName;
    this->lastName = lastName;
@@ -29,7 +33,7 @@ Student::Student(string studentID, string firstName, string lastName, string ema
    this->dgram = dgram;
 }
 
-//Getter functions
+// Getter functions, used to access private members or methods of the class
 string Student::getStudentID()
 {
    return studentID;
@@ -54,10 +58,11 @@ int Student::getAge()
 {
    return age;
 }
-
+// this will return a pointer to the arrayDaysToComplete
+// allows access of arrayDaysToComplete from outside the "Student" class
 int* Student::getDaysToComplete()
 {
-   return arrayDaysToComplete;           //pointer to  the establsihed array
+   return arrayDaysToComplete;
 }
 
 DegreeProgram Student::getDegreeProgram()
@@ -66,7 +71,7 @@ DegreeProgram Student::getDegreeProgram()
 }
 
 
-//Setter functions
+// Setter functions, these allow me to change the values of the private methods
 
 void Student::setID(string studentID)
 {
@@ -105,7 +110,8 @@ void Student::setDegreeProgram(DegreeProgram dgram)
 {
    this->dgram = dgram;
 }
-
+// function below prints the student ID, name, age, days to complete courses, and the degree program
+// it uses a tab seperated format noted by '\t'
 void Student::print()
 {
    cout << getStudentID() << '\t' << getFirstName() << '\t' << getLastName() << '\t' << getAge() << '\t';
@@ -114,7 +120,7 @@ void Student::print()
    cout << "Degree Program: " << DegreeTypes[getDegreeProgram()] << endl;
 }
 
-//Destructor
+// Destructor to clear up used memory
 Student::~Student()
 {
    if (arrayDaysToComplete != nullptr)
